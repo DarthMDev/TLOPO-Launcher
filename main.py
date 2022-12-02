@@ -5,13 +5,27 @@ import apirequests
 import downloader
 import startgame
 import getpass
-
+import argparse
 
 # TODO: Replace main with a GUI
 def get_response(token=False):
+    parser = argparse.ArgumentParser(description='TLOPO Launcher')
+    # add username and password arguments
+    parser.add_argument('-u', '--username', help='Username', required=False)
+    parser.add_argument('-p', '--password', help='Password', required=False)
+    args = parser.parse_args()
     # Input username and password store in data dict
-    username = input("Username: ")
-    password = getpass.getpass('Password: ')
+    if args.username is None:
+        username = input("Username: ")
+    else:
+        username = args.username
+    if args.password is None:
+        password = getpass.getpass('Password: ')
+    else:
+        password = args.password
+    
+    
+    
     # If token requested then get that as well
     if token:
         gtoken = input("2FA Code: ")
