@@ -29,6 +29,7 @@ def start_game(response, distr):
     if platform == 'win32':
         os.system(exe + '.exe')
     elif platform == 'linux' or platform == 'linux2':
+        os.system('chmod +x ' + exe)
         os.system('./' + exe)
     elif platform == 'darwin':
         os.system(exe + '.app')
